@@ -1,0 +1,149 @@
+{
+  "customers": [
+    {
+      "Name": "Narasimha Reddy",
+      "Location": "Dellas,Texas",
+      "orders": 5,
+      "image" :"/images/User.jpg"
+    },
+      {
+          "Name": "Sachin Tendulkar",
+          "Location": "Los Angels,California",
+          "orders": 20,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Albert Einstien",
+          "Location": "Settle,Washington",
+          "orders": 6,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Bill Gates",
+          "Location": "Anehim,California",
+          "orders": 8,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Albert Sansizo",
+          "Location": "Phoenix,Arezona",
+          "orders": 5,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy Jamison",
+          "Location": "Chandier,Arizona",
+          "orders": 6,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy Crush",
+          "Location": "Dallas,Texas",
+          "orders": 17,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy Meroon",
+          "Location": "Newyork",
+          "orders": 28,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy sharon",
+          "Location": "Dellas,Texas",
+          "orders": 10,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Albert Raja",
+          "Location": "Anehim,California",
+          "orders": 14,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Albert Kumar",
+          "Location": "Phoenix,Arezona",
+          "orders": 25,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy Jamison",
+          "Location": "Chandier,Arizona",
+          "orders": 16,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy Crush",
+          "Location": "Dallas,Texas",
+          "orders": 27,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy Meroon",
+          "Location": "Newyork",
+          "orders": 18,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Candy sharon",
+          "Location": "Dellas,Texas",
+          "orders": 21,
+          "image" :"/images/User.jpg"
+      },
+      {
+          "Name": "Yuvraj",
+          "Location": "Dellas,Texas",
+          "orders": 10,
+          "image" :"/images/User.jpg"
+      },
+      {
+        "Name": "Robin Cleark",
+        "Location": "Los Angels,California",
+        "orders": 12,
+        "image" :"/images/User.jpg"
+    },
+    {
+        "Name": "Albert Einstien",
+        "Location": "Settle,Washington",
+        "orders": 23,
+        "image" :"/images/User.jpg"
+    },
+    {
+        "Name": "Albert Raja",
+        "Location": "Anehim,California",
+        "orders": 14,
+        "image" :"/images/User.jpg"
+    },
+    {
+        "Name": "Albert Kumar",
+        "Location": "Phoenix,Arezona",
+        "orders": 52,
+        "image" :"/images/User.jpg"
+    },
+    {
+        "Name": "Candy Jamison",
+        "Location": "Chandier,Arizona",
+        "orders": 26,
+        "image" :"/images/User.jpg"
+    },
+    {
+        "Name": "Candy Crush",
+        "Location": "Dallas,Texas",
+        "orders": 7,
+        "image" :"/images/User.jpg"
+    },
+    {
+        "Name": "Candy Meroon",
+        "Location": "Newyork",
+        "orders": 18,
+        "image" :"/images/User.jpg"
+    },
+    {
+        "Name": "Candy sharon",
+        "Location": "Dellas,Texas",
+        "orders": 29,
+        "image" :"/images/User.jpg"
+    }
+    
+  ]
+}
