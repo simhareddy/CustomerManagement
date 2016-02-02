@@ -1,0 +1,60 @@
+<div dir-paginate="customer in customers |filter:customerName:strict | itemsPerPage:12" >
+	<div ng-include="getTemplate(customer)"> </div>
+</div>
+
+<script type="text/ng-template" id="display">
+    
+	<div class="row">
+
+        <div class="col-md-3">
+            <div class="panel panel-primary" >
+                <div class="panel-heading">{{customer.Name}} <button type="button" class="close" ng-click="delete(customer)">x</button> </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img ng-src="{{customer.image}}" width="70" height="70">
+                        </div>
+                        <div class="col-md-8">
+                            <p>{{customer.Location}}</p>
+                            <p>{{customer.orders}} Orders</p>
+                            <button ng-click="editCustomer(customer)">Edit</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</script>	
+
+<script type="text/ng-template" id="edit">
+    <div class="row">
+    <div class="col-md-12">
+    Name : <input type="text" ng-model="model.selected.customer.Name">
+    </div>
+    <div class="col-md-12">
+    Location : <input type="text" ng-model="model.selected.customer.Location">
+        </div>
+    <div class="col-md-12">
+    orders : <input type="text" ng-model="model.selected.customer.orders" ng-init="0">
+        </div>
+    <div class="col-md-12">
+		<div class="col-md-8"> <button ng-click="saveCustomer($index)">Save</button> 
+         <button ng-click="reset()">Cancel</button></div>
+	</div>
+	</div>
+</script>
+
+
+<div class="row"> 
+<dir-pagination-controls
+        max-size="12"
+        boundary-links="true" on-page-change="pageChanged(newPageNumber)">
+    </dir-pagination-controls>
+</div>
+
+<div class="row">
+    Showings {{visibleCustomers}} of {{customers.length}} total customers.
+    
+</div>
