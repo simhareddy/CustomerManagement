@@ -59,6 +59,18 @@ body {
   margin-top: 28px;
 }
 
+.links.ng-scope{
+	padding-left: 30px;
+}
+
+.list-links.ng-scope{
+	padding-left: 22px;
+	}
+
+.searchFilter{
+	margin-right:15px;
+}
+	
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
@@ -79,5 +91,15 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+  
+  .links.ng-scope{
+	padding-left: 28px;
+	}
+  .list-links.ng-scope{
+	padding-left: 15px;
+	}
+	.searchFilter{
+	margin-right:15px;
   }
 }
