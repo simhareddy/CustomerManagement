@@ -1,84 +1,90 @@
 <div ng-class="row">
-    <div class="col-md-12">
+  <div class="col-md-12">
 
-	<div  dir-paginate="customer in customers |filter:customerName:strict | itemsPerPage:12">
-	<div ng-include="getTemplate(customer)"> </div>
-</div>
+    <div dir-paginate="customer in customers |filter:customerName:strict| filter:groups| itemsPerPage:pagination.perPage" item="item" current-page="pagination.currentPage">
+      <div ng-include="getTemplate(customer)"></div>
     </div>
-</div>	
+  </div>
+</div>
 <script type="text/ng-template" id="display">
-    <div class="col-md-3">
-    <div class="panel panel-primary" >
-        <div class="panel-heading">{{customer.Name}}<button type="button" class="close" ng-click="delete(customer)">x</button> </div>
-        <div class="panel-body">
-            <div class="row">
-              <div class="col-md-4">
-             <img ng-src="{{customer.image}}" width="70" height="70">
-               </div>
-              <div class="col-md-8">
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{customer.Name}}
+        <button type="button" class="close" ng-click="delete(customer)">x</button>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <img ng-src="{{customer.image}}" width="70" height="70">
+          </div>
+          <div class="col-md-8">
             <p>{{customer.Location}}</p>
             <p>{{customer.orders}} Orders</p>
             <button ng-click="editCustomer(customer)">Edit</button>
-              </div>
+          </div>
 
         </div>
-    </div>
+      </div>
 
     </div>
-     </div>
+  </div>
 
 </script>
 
 <script type="text/ng-template" id="edit">
-   <div class = "row col-md-12">
-   <form name="customerForm" class="col-md-4">
-   <div class="page-header">
-		<h1> Edit Customer </h1>
-	</div>
-    <div class="form-group">
-    Name : <input type="text" placeholder="Enter customer name" ng-model="customer.Name" required>
-    </div>
-	 <div class="form-group">
-    Location : <input type="text" placeholder="Enter customer location" ng-model="customer.Location" required>
-    </div>
-	    
-    <div class="form-group">
-    orders : <input type="text" ng-model="customer.orders" ng-init="0">
-    </div>
-    <div class="form-group">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">Select Picture <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a ng-click="customer.image='/images/female_user_icon.png'">/images/female_user_icon.png</a></li>
-                    <li><a ng-click="customer.image='/images/male_user_icon.png'">/images/male_user_icon.png</a></li>
-                </ul>
+  <div class="row col-md-12">
+    <form name="customerForm" class="col-md-4">
+      <div class="page-header">
+        <h1> Edit Customer </h1>
+      </div>
+      <div class="form-group">
+        Name : <input type="text" placeholder="Enter customer name" ng-model="customer.Name" required>
+      </div>
+      <div class="form-group">
+        Location : <input type="text" placeholder="Enter customer location" ng-model="customer.Location" required>
+      </div>
 
-            </div><!-- /btn-group -->
-            <input type="text" name="image" ng-model="customer.image" readonly required>
-        </div>
+      <div class="form-group">
+        orders : <input type="text" ng-model="customer.orders" ng-init="0">
+      </div>
+      <div class="form-group">
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">Select Picture <span
+            class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a ng-click="customer.image='/images/female_user_icon.png'">/images/female_user_icon.png</a></li>
+            <li><a ng-click="customer.image='/images/male_user_icon.png'">/images/male_user_icon.png</a></li>
+          </ul>
 
-   <!-- image : <input type="file" >
-        </div>  -->
-	<div class="form-group"> 
-		<button type="submit" ng-click="saveCustomer(customer)" ng-disabled="customerForm.$invalid"> Save </button>
-		<button type="button" ng-click="reset()">Cancel</button>
-	</div>
+        </div><!-- /btn-group -->
+        <input type="text" name="image" ng-model="customer.image" readonly required>
+      </div>
 
-    
-	</form>
-	</div>
+      <!-- image : <input type="file" >
+           </div>  -->
+      <div class="form-group">
+        <button type="submit" ng-click="saveCustomer(customer)" ng-disabled="customerForm.$invalid"> Save</button>
+        <button type="button" ng-click="reset()">Cancel</button>
+      </div>
+
+
+    </form>
+  </div>
 </script>
 
-<div class="links"> 
-<dir-pagination-controls
-        max-size="12"
-        boundary-links="true" 
-		direction-links="true"
-		on-page-change="pageChanged(newPageNumber)" class="pagination-sm">
-    </dir-pagination-controls>
+<div class="links">
+  <dir-pagination-controls
+     boundary-links="true"
+    direction-links="true"
+    on-page-change="pageChanged(newPageNumber)" class="pagination-sm">
+  </dir-pagination-controls>
 </div>
 
-<div class="links">
-    Showings {{visibleCustomers}} of {{customers.length}} total customers.
-    
+<div class="links" ng-if="visibleCustomers > 0">
+  Showings {{visibleCustomers}} of {{customers.length}} total customers.
+
+</div>
+<div class="links" ng-if="visibleCustomers == 0">
+  There are no customers to view.
+
 </div>
