@@ -32,7 +32,7 @@ customerManagementApp.controller('getDataController', function ($rootScope, $sco
   $http.get('/customers/')
     .success(function (data) {
       $rootScope.customers = data.customers;
-      console.log('inside success');
+      //console.log('inside success');
     });
 });
 
@@ -46,26 +46,41 @@ customerManagementApp.controller('customerAppController', function ($rootScope, 
     total: 0
   };
   $scope.customers = $rootScope.customers;
+  $scope.totalCustomers = $scope.customers.length;
 
   $rootScope.filterChange = function () {
     if ($scope.customerName.Name.trim().length > 0) {
       $scope.visibleCustomers = $filter('filter')($scope.customers, $scope.customerName).length;
-
+      $scope.pagination.total = Math.ceil($scope.visibleCustomers / $scope.pagination.perPage);
+      $scope.totalCustomers = $scope.visibleCustomers;
       if ($scope.visibleCustomers > $scope.pagination.perPage) {
-        $scope.visibleCustomers = $scope.noOfCustomers();
+        if ($scope.pagination.currentPage !== $scope.pagination.total) {
+          $scope.visibleCustomers = ($scope.pagination.currentPage * $scope.pagination.perPage);
+        } else {
+          $scope.visibleCustomers = $scope.totalCustomers;
+        }
       }
     } else {
       $scope.visibleCustomers = $scope.noOfCustomers();
     }
+
   };
 
   $scope.noOfCustomers = function () {
+    $scope.totalCustomers = $scope.customers.length;
     if ($scope.pagination.currentPage !== $scope.pagination.total) {
       this.visibleCustomers = ($scope.pagination.currentPage * $scope.pagination.perPage);
     }
     else {
       this.visibleCustomers = $scope.customers.length;
     }
+    //console.log('visible customers::'+this.visibleCustomers);
+    //console.log('total customers::'+ $scope.totalCustomers);
+    if (this.visibleCustomers > $scope.totalCustomers) {
+      //console.log('inside ');
+      this.visibleCustomers = $scope.totalCustomers;
+    }
+
 
     return this.visibleCustomers;
   };
@@ -80,14 +95,18 @@ customerManagementApp.controller('customerAppController', function ($rootScope, 
     $scope.pagination.currentPage = newPage;
 
     $scope.visibleCustomers = $scope.noOfCustomers();
+
   };
 
   // Delete customer
   $scope.delete = function (customer) {
 
     $scope.customers.splice($scope.customers.indexOf(customer), 1);
-
     $scope.visibleCustomers = $scope.noOfCustomers();
+
+    if ($rootScope.customerName !== undefined) {
+      $rootScope.filterChange();
+    }
   };
 
   // Add customer

@@ -1,4 +1,5 @@
-<div dir-paginate="customer in customers |filter:customerName:strict | itemsPerPage:12">
+<div dir-paginate="customer in customers |filter:customerName:strict | itemsPerPage:pagination.perPage" item="item"
+     current-page="pagination.currentPage">
   <div ng-include="getTemplate(customer)"></div>
 </div>
 
@@ -77,6 +78,9 @@
   </dir-pagination-controls>
 </div>
 
-<div class="list-links">
-  Showings {{visibleCustomers}} of {{customers.length}} total customers.
+<div class="links" ng-if="visibleCustomers > 0">
+  Showing {{visibleCustomers}} of {{totalCustomers}} total customers.
+</div>
+<div class="links" ng-if="visibleCustomers == 0">
+  There are no customers to view.
 </div>
