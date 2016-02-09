@@ -63,7 +63,6 @@ customerManagementApp.controller('customerAppController', function ($rootScope, 
     } else {
       $scope.visibleCustomers = $scope.noOfCustomers();
     }
-
   };
 
   $scope.noOfCustomers = function () {
@@ -74,14 +73,9 @@ customerManagementApp.controller('customerAppController', function ($rootScope, 
     else {
       this.visibleCustomers = $scope.customers.length;
     }
-    //console.log('visible customers::'+this.visibleCustomers);
-    //console.log('total customers::'+ $scope.totalCustomers);
     if (this.visibleCustomers > $scope.totalCustomers) {
-      //console.log('inside ');
       this.visibleCustomers = $scope.totalCustomers;
     }
-
-
     return this.visibleCustomers;
   };
 

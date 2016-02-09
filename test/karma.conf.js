@@ -32,15 +32,16 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angularUtils-pagination/dirPagination.js', //newly added for pagination
       // endbower
-      "app/scripts/**/*.js",
+      "app/scripts/*.js",
       "test/mock/**/*.js",
       "test/spec/**/*.js"
     ],
 
     // list of files / patterns to exclude
     exclude: [
-    ],
+      ],
 
     // web server port
     port: 8080,
