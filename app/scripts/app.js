@@ -66,15 +66,30 @@ customerManagementApp.controller('customerAppController', function ($rootScope, 
   };
 
   $scope.noOfCustomers = function () {
-    $scope.totalCustomers = $scope.customers.length;
-    if ($scope.pagination.currentPage !== $scope.pagination.total) {
-      this.visibleCustomers = ($scope.pagination.currentPage * $scope.pagination.perPage);
+    if ($scope.customerName !== undefined && $scope.customerName.Name.trim().length > 0) {
+      $scope.visibleCustomers = $filter('filter')($scope.customers, $scope.customerName).length;
+      $scope.pagination.total = Math.ceil($scope.visibleCustomers / $scope.pagination.perPage);
+      $scope.totalCustomers = $scope.visibleCustomers;
+      if ($scope.visibleCustomers > $scope.pagination.perPage) {
+        if ($scope.pagination.currentPage !== $scope.pagination.total) {
+          this.visibleCustomers = ($scope.pagination.currentPage * $scope.pagination.perPage);
+        } else {
+          this.visibleCustomers = $scope.totalCustomers;
+        }
+      }
     }
     else {
-      this.visibleCustomers = $scope.customers.length;
-    }
-    if (this.visibleCustomers > $scope.totalCustomers) {
-      this.visibleCustomers = $scope.totalCustomers;
+      $scope.totalCustomers = $scope.customers.length;
+      $scope.pagination.total = Math.ceil($scope.customers.length / $scope.pagination.perPage);
+      if ($scope.pagination.currentPage !== $scope.pagination.total) {
+        this.visibleCustomers = ($scope.pagination.currentPage * $scope.pagination.perPage);
+      }
+      else {
+        this.visibleCustomers = $scope.customers.length;
+      }
+      if (this.visibleCustomers > $scope.totalCustomers) {
+        this.visibleCustomers = $scope.totalCustomers;
+      }
     }
     return this.visibleCustomers;
   };
