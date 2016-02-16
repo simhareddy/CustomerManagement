@@ -131,7 +131,6 @@ customerManagementApp.controller('customerAppController', function ($rootScope, 
     };
     $rootScope.customers.push(customerDetails);
 
-    // console.log($rootScope.customers);
     $scope.customer.Name = '';
     $scope.customer.Location = '';
     $scope.customer.orders = '';
@@ -164,11 +163,7 @@ customerManagementApp.controller('customerAppController', function ($rootScope, 
   };
 // Update the customer
   $scope.saveCustomer = function (customer) {
-    // $scope.model.selected = angular.copy(customer);
-    /*var data = $scope.customers;
-     var idx = data.map(function (d) {
-     return d['id'];
-     }).indexOf(customer.id);*/
+
     var index = $scope.customers.indexOf(customer);
     $scope.customers[index] = angular.copy(customer);
     $scope.reset();
